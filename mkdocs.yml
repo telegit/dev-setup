@@ -49,3 +49,7 @@ nav:
     - noine.fm: noine-fm-deployment.md
   - Project Templates:
     - Small Biz Astro: small-biz-astro-template.md
+  - Local Environment Setup:
+    - Python Project Generator: python-project-generator.md
+    - Dotfiles Setup: dotfiles-setup.md
+    - Night Owl Theme: night-owl-theme.md

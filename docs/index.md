@@ -15,3 +15,9 @@ Personal developer cheat sheets, deployment guides, and project templates.
 ## Project Templates
 
 - [Small Biz Astro Template](small-biz-astro-template.md)
+
+## Local Environment Setup
+
+- [Python Project Generator](python-project-generator.md)
+- [Dotfiles Setup](dotfiles-setup.md)
+- [Night Owl Theme](night-owl-theme.md)
