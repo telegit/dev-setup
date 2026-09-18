@@ -34,6 +34,30 @@ No configuration needed. Netlify detects `data-netlify="true"` on the form at bu
 
 ---
 
+## Google Sheets Form Catcher (optional)
+
+To mirror form submissions into a Google Sheet the client owns (on top of
+Netlify Forms, no third-party service): Netlify fires an outgoing webhook on
+each submission to a Google Apps Script web app bound to the client's Sheet,
+which appends a row.
+
+Canonical script + full setup/troubleshooting doc:
+[`client-site-template/docs/google-sheets-catcher.md`](https://github.com/telegit/client-site-template/blob/main/docs/google-sheets-catcher.md)
+(and `sheets-catcher.gs` alongside it — copy both into the client repo's
+`docs/` and adjust the `TABS` mapping to that site's form name(s)).
+
+**The one gotcha that always bites:** when deploying the Apps Script web app,
+*Who has access* must be **Anyone** — not "Anyone with Google account".
+Netlify's webhook call is unauthenticated, so anything less bounces it with a
+Google Drive "You need access" page (HTTP 403) before `doPost` ever runs.
+Symptom: Netlify shows the submission fine (email notifications work), the
+Sheet stays empty, and the Apps Script Executions log is completely empty —
+nothing to debug because the code never ran. Test the `/exec` URL directly
+with `docs/test-sheets-catcher.sh <url>` from the template repo to catch this
+in seconds, bypassing Netlify entirely.
+
+---
+
 ## Ongoing Deploys
 
 Every `git push` to `master` triggers an automatic redeploy. Nothing else needed.
