@@ -76,6 +76,17 @@ Option A — Point nameservers to Netlify (recommended):
 
 Option B — Add a CNAME record at your registrar pointing to the Netlify subdomain.
 
+**After cutting over, verify it:** `check-dns-cutover.sh <domain>
+[expected-mx-substring]` (repo root here, and in `client-site-template/docs/`)
+checks the A record, HTTPS + redirects, SSL cert validity, and page content
+in one shot — pass the second arg for a domain with email on it (Google
+Workspace, Microsoft 365, etc.) to confirm the MX record survived the
+cutover:
+
+```bash
+./check-dns-cutover.sh example.com "mail.protection.outlook.com"
+```
+
 ---
 
 ## Notes
